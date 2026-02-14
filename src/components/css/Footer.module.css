@@ -1,0 +1,318 @@
+.footer {
+    background: #0d141c;
+    /* Deep Midnight Navy - much better for premium look with Orange */
+    color: white;
+    padding: 4rem 0 2rem;
+    /* Reduced from 6rem */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle decorative element */
+.footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 3rem;
+    /* Reduced from 4rem */
+    margin-bottom: 3rem;
+    /* Reduced from 5rem */
+}
+
+.logoArea {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    /* Reduced from 1.8rem */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logoText {
+    font-size: 1.4rem;
+    /* Reduced from 1.6rem */
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+}
+
+.logoText span {
+    font-size: 0.8rem;
+    /* Reduced from 0.9rem */
+    font-weight: 500;
+    display: block;
+    margin-top: 4px;
+    color: var(--primary);
+    /* Highlight with orange */
+    letter-spacing: 1px;
+}
+
+.aboutText {
+    color: #a0aec0;
+    font-size: 0.9rem;
+    /* Reduced from 0.95rem */
+    line-height: 1.6;
+    /* Reduced from 1.8 */
+}
+
+.column h4 {
+    font-size: 0.95rem;
+    /* Reduced from 1.1rem */
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    /* Reduced from 2.2rem */
+    position: relative;
+    padding-bottom: 0.6rem;
+    color: white;
+}
+
+.column h4:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 2px;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    /* Reduced from 1.2rem */
+}
+
+.link {
+    color: #cbd5e0;
+    font-size: 0.9rem;
+    /* Reduced from 0.95rem */
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: block;
+}
+
+.link:hover {
+    color: var(--primary);
+    transform: translateX(8px);
+}
+
+.contactItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    /* Reduced from 1.8rem */
+    color: #cbd5e0;
+    font-size: 0.9rem;
+}
+
+.contactItem svg {
+    color: var(--primary);
+    /* Use orange for icons to tie back to brand */
+    flex-shrink: 0;
+    width: 18px;
+    /* Slightly smaller icons */
+    height: 18px;
+}
+
+.socialLinks {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.socialIcon {
+    width: 36px;
+    /* Reduced from 40px */
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.socialIcon:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-4px);
+}
+
+.bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 2rem;
+    /* Reduced from 3rem */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    /* Reduced from 0.9rem */
+    color: #718096;
+}
+
+.bottomLinks {
+    display: flex;
+    gap: 1.5rem;
+    /* Reduced from 2rem */
+}
+
+@media (max-width: 992px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+
+    .bottom {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 640px) {
+    .footer {
+        padding: 3rem 0 2rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .logoArea {
+        grid-column: span 2;
+        /* Logo takes the whole top row */
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+            "logo social"
+            "text text";
+        gap: 0.8rem 1rem;
+        align-items: center;
+        text-align: left;
+        margin-bottom: 2rem;
+        order: 0;
+    }
+
+    /* Swap Quick Links (child 2) and Contact Us (child 4) */
+    .grid>div:nth-child(2) {
+        order: 2;
+        text-align: right;
+        /* Align text to the right on the right column */
+    }
+
+    .grid>div:nth-child(2) h4:after {
+        left: auto;
+        right: 0;
+        /* Align underline to the right */
+    }
+
+    .grid>div:nth-child(4) {
+        order: 1;
+    }
+
+    .logo {
+        grid-area: logo;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 8px;
+        min-width: 0;
+    }
+
+    .logo img {
+        width: 38px !important;
+        height: 38px !important;
+        min-width: 38px;
+    }
+
+    .logoText {
+        font-size: 1rem;
+        line-height: 1.1;
+        white-space: nowrap;
+    }
+
+    .logoText span {
+        font-size: 0.7rem;
+        margin-top: 2px;
+    }
+
+    .aboutText {
+        grid-area: text;
+        display: block;
+        margin-bottom: 0;
+        text-align: left;
+        font-size: 0.75rem;
+        color: #a0aec0;
+        line-height: 1.5;
+    }
+
+    .socialLinks {
+        grid-area: social;
+        display: flex;
+        justify-self: end;
+        /* Align to right */
+        gap: 0.6rem;
+        margin-top: 0;
+    }
+
+    .socialIcon {
+        width: 32px;
+        height: 32px;
+    }
+
+    /* Hide Destinations column on mobile - it is the 3rd child in the grid */
+    .grid>div:nth-child(3) {
+        display: none;
+    }
+
+    .column h4 {
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+        /* Slightly reduce margin too */
+        display: block;
+    }
+
+    .link {
+        font-size: 0.8rem;
+    }
+
+    .column h4:after {
+        left: 0;
+        transform: none;
+    }
+
+    .contactItem {
+        justify-content: flex-start;
+        gap: 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    .contactItem svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .bottomLinks {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+}

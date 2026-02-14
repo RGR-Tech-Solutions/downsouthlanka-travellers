@@ -1,0 +1,263 @@
+.hero {
+    position: relative;
+    height: 50vh;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+    padding: 100px 0 60px;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(to top, #ffffff, transparent);
+    z-index: 6;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+}
+
+.heroOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.6) 0%,
+            rgba(0, 0, 0, 0.2) 60%,
+            #ffffff 100%);
+    z-index: 5;
+}
+
+.heroTitle {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+}
+
+.heroSubtitle {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.filterSection {
+    margin-top: -40px;
+    position: relative;
+    z-index: 20;
+    padding: 0 1rem;
+}
+
+.filterContainer {
+    background: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 1px solid #f0f0f0;
+}
+
+.searchWrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-left: 0.75rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.searchInput {
+    padding: 0.75rem 0;
+    border: none;
+    background: transparent;
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    color: var(--secondary);
+    font-weight: 500;
+}
+
+.tagWrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.desktopOnly {
+    display: flex;
+    gap: 0.35rem;
+}
+
+.mobileOnly {
+    display: none;
+}
+
+.tagButton {
+    padding: 0.4rem 0.75rem;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 0.78rem;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    border: 1px solid #eee;
+    background: white;
+}
+
+.mobileSelect {
+    padding: 0.6rem 0.75rem;
+    border-radius: 100px;
+    /* Kept pill style for row look */
+    border: 1px solid #eee;
+    background: #f8f9fa;
+    font-family: inherit;
+    font-size: 0.85rem;
+    color: var(--secondary);
+    outline: none;
+    cursor: pointer;
+    max-width: 130px;
+    /* Limit width in row */
+}
+
+/* Page Specific Tour Card */
+.fullTourCard {
+    background: white;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.fullTourCard:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.tourImageWrapper {
+    position: relative;
+    height: 240px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.tourImageWrapper img {
+    object-fit: cover;
+}
+
+.cardBody {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.tourTitle {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--secondary);
+    line-height: 1.3;
+}
+
+.tourMeta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+.metaItem {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.tourDescription {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin: 0.5rem 0;
+}
+
+.enquireBtn {
+    margin-top: auto;
+    width: 100%;
+    justify-content: center;
+}
+
+@media (max-width: 1200px) {
+    .filterContainer {
+        gap: 1rem;
+        max-width: 95%;
+    }
+}
+
+@media (max-width: 768px) {
+    .filterSection {
+        margin-top: -30px;
+    }
+
+    .filterContainer {
+        padding: 0.4rem 0.6rem;
+        gap: 0.5rem;
+    }
+
+    .searchWrapper {
+        padding-left: 0.4rem;
+    }
+
+    .searchInput {
+        font-size: 0.9rem;
+        padding: 0.6rem 0;
+    }
+
+    .mobileOnly {
+        display: block;
+    }
+
+    .desktopOnly {
+        display: none;
+    }
+
+    .tourImageWrapper {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .filterContainer {
+        border-radius: 100px;
+        padding: 0.3rem 0.5rem;
+    }
+
+    .mobileSelect {
+        max-width: 100px;
+        padding: 0.5rem 0.4rem;
+        font-size: 0.8rem;
+    }
+
+    .heroTitle {
+        font-size: 2.2rem;
+    }
+}

@@ -1,0 +1,207 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--nav-height);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scrolled {
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-sm);
+    height: 70px;
+}
+
+.navContainer {
+    max-width: var(--max-width);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.logoImg {
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.logoText {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--secondary);
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    transition: color 0.3s ease;
+}
+
+.logoText span {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--muted);
+    transition: color 0.3s ease;
+}
+
+/* Make text white when navbar is NOT scrolled AND NOT open (over hero images) */
+.navbar:not(.scrolled):not(.open) .logoText {
+    color: white;
+}
+
+.navbar:not(.scrolled):not(.open) .logoText span {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.navbar:not(.scrolled):not(.open) .navLink {
+    color: white;
+}
+
+.navbar:not(.scrolled):not(.open) .mobileMenuBtn {
+    color: white;
+}
+
+.open {
+    background: white;
+    box-shadow: var(--shadow-sm);
+}
+
+.navLinks {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.navLink {
+    font-weight: 500;
+    color: var(--foreground);
+    position: relative;
+    font-size: 0.95rem;
+}
+
+.navLink:after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s ease;
+}
+
+.navLink:hover:after {
+    width: 100%;
+}
+
+.cta {
+    background: var(--primary);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.cta:hover {
+    background: var(--primary-dark);
+    transform: scale(1.05);
+}
+
+.mobileMenuBtn {
+    display: none;
+    color: var(--secondary);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.mobileMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    box-shadow: var(--shadow-md);
+    padding: 1rem 0;
+    overflow: hidden;
+}
+
+.mobileMenuLinks {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem;
+    gap: 1.5rem;
+}
+
+.mobileNavLink {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--secondary);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.mobileCta {
+    background: var(--primary);
+    color: white;
+    width: 100%;
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    text-align: center;
+}
+
+@media (max-width: 1024px) {
+    .navLinks {
+        gap: 1.2rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .navLinks {
+        display: none;
+    }
+
+    .mobileMenuBtn {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0 1rem;
+    }
+
+    .logoImg {
+        height: 38px;
+        width: 38px;
+    }
+
+    .logoText {
+        font-size: 1rem;
+    }
+
+    .logoText span {
+        font-size: 0.65rem;
+    }
+}

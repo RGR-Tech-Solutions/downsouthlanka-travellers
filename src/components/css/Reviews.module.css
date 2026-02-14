@@ -1,0 +1,611 @@
+.reviewsSection {
+    padding: 3rem 0 5rem;
+    background: var(--light-gray);
+    overflow: hidden;
+}
+
+.header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+}
+
+.sliderWrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: 3rem;
+    padding: 0 45px;
+    /* Added padding to give arrows their own space */
+}
+
+.sliderContainer {
+    overflow: hidden;
+    cursor: grab;
+}
+
+.sliderContainer:active {
+    cursor: grabbing;
+}
+
+.track {
+    display: flex;
+    gap: 2rem;
+}
+
+.slide {
+    flex: 0 0 calc((100% - 4rem) / 3);
+    /* 3 cards with 2 gaps of 2rem each */
+    height: auto;
+}
+
+.navPrev,
+.navNext {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--secondary);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.navPrev {
+    left: 0;
+    /* Align within the padding */
+}
+
+.navNext {
+    right: 0;
+    /* Align within the padding */
+}
+
+.navPrev:hover,
+.navNext:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    /* Allow wrapping for many reviews */
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.activeDot {
+    background: var(--primary);
+    width: 25px;
+    border-radius: 10px;
+}
+
+.reviewCard {
+    background: white;
+    padding: 1.75rem 2rem;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.reviewCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.reviewerInfo {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-light);
+}
+
+.name {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--secondary);
+}
+
+.reviewerDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.country {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.rating {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 0.75rem;
+    color: #ffc107;
+}
+
+.comment {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--dark-gray);
+    margin-bottom: 1rem;
+    flex-grow: 1;
+    font-style: italic;
+}
+
+.date {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-weight: 500;
+}
+
+/* Modal/Form Styling */
+.modalBackdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.modalContent {
+    background: white;
+    width: 100%;
+    max-width: 800px;
+    max-height: 95vh;
+    border-radius: 24px;
+    position: relative;
+    padding: 1.5rem 2.5rem;
+    overflow-y: auto;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+    /* Hide scrollbar */
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+}
+
+.modalContent::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+.formTitle {
+    text-align: center;
+    margin-bottom: 1.25rem;
+    /* Reduced margin */
+}
+
+.formTitle h3 {
+    font-size: 1.4rem;
+    /* Smaller font */
+    margin-bottom: 0.25rem;
+}
+
+.formTitle p {
+    font-size: 0.85rem !important;
+    /* Smaller font */
+}
+
+.uploadSection {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.hiddenInput {
+    display: none;
+}
+
+.avatarUploadWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.uploadTrigger {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    background: none;
+    border: 2px dashed #ddd;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--muted);
+}
+
+.uploadTrigger:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: rgba(var(--primary-rgb), 0.02);
+}
+
+.uploadIconCircle {
+    width: 36px;
+    height: 36px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.uploadTrigger span {
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.previewContainer {
+    position: relative;
+    width: 60px;
+    height: 60px;
+}
+
+.avatarPreview {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-light);
+}
+
+.removePhotoBtn {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: #ff4444;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.formGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.formGroupFull {
+    grid-column: span 3;
+}
+
+.closeBtn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    color: var(--muted);
+    background: var(--light-gray);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.label {
+    font-size: 0.8rem;
+    /* Smaller labels */
+    font-weight: 600;
+    color: var(--secondary);
+    margin-left: 0.3rem;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input,
+.textarea,
+.select {
+    padding: 0.75rem 1rem;
+    /* Reduced padding */
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    background: #f9f9f9;
+    font-size: 0.9rem;
+    /* Smaller font */
+    transition: all 0.3s ease;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.1);
+}
+
+.textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.submitBtn {
+    width: 100%;
+    padding: 0.85rem;
+    /* Reduced padding */
+    font-weight: 700;
+    margin-top: 0.5rem;
+    /* Reduced top margin */
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    /* Slightly smaller button font */
+}
+
+.submitBtn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(var(--primary-rgb), 0.3);
+}
+
+.submitBtn:disabled {
+    background: var(--muted);
+    cursor: not-allowed;
+    transform: none;
+}
+
+.successMessage {
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.ctaWrapper {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.openModalBtn {
+    background: var(--secondary);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    box-shadow: 0 10px 20px rgba(0, 86, 179, 0.2);
+}
+
+.openModalBtn:hover {
+    background: var(--secondary-light);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0, 86, 179, 0.3);
+}
+
+@media (max-width: 768px) {
+    .reviewsSection {
+        padding: 3rem 0;
+    }
+
+    .header {
+        margin-bottom: 2rem;
+    }
+
+    .sliderWrapper {
+        margin: 0 -1.5rem;
+        /* Offset the 1.5rem container padding */
+        padding: 0 10px;
+        /* Minimal padding for edge-to-edge look */
+        width: calc(100% + 3rem);
+        /* Ensure it spans the full screen */
+    }
+
+    .slide {
+        flex: 0 0 calc((100% - 8px) / 2);
+        /* Maximize width, tiny 8px gap */
+        width: calc((100% - 8px) / 2);
+    }
+
+    .track {
+        gap: 8px;
+    }
+
+    /* Reduced gap to save space for card width */
+
+    .reviewCard {
+        padding: 1rem 0.6rem;
+        /* Even tighter padding */
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* Center horizontally */
+        text-align: center;
+        /* Center text */
+        gap: 0.4rem;
+    }
+
+    .reviewerInfo {
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+        min-height: 44px;
+        /* Stable height for avatar + name section */
+        display: flex;
+        flex-direction: column;
+        /* Stack avatar and name */
+        align-items: center;
+    }
+
+    .reviewerDetails {
+        min-height: 32px;
+        /* Stable height for name + country */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .avatar {
+        width: 40px;
+        height: 40px;
+    }
+
+    .rating {
+        margin-bottom: 0.5rem;
+        min-height: 16px;
+        /* Stable height for stars */
+        display: flex;
+        justify-content: center;
+    }
+
+    .comment {
+        font-size: 0.85rem;
+        /* Increased slightly for readability */
+        line-height: 1.5;
+        margin-bottom: 0.75rem;
+        display: block;
+        /* Removed line clamp */
+        overflow: visible;
+        min-height: auto;
+    }
+
+    .name {
+        font-size: 0.95rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 120px;
+        /* Limit width to ensure it doesn't push country out or look messy */
+    }
+
+    .country {
+        font-size: 0.75rem;
+    }
+
+    .navPrev,
+    .navNext {
+        display: flex;
+        width: 32px;
+        height: 32px;
+        top: 98px;
+        /* Adjusted for centered stack layout */
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navPrev {
+        left: -10px;
+    }
+
+    .navNext {
+        right: -10px;
+    }
+
+    .navPrev svg,
+    .navNext svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .modalBackdrop {
+        padding: 10px;
+        align-items: center;
+    }
+
+    .modalContent {
+        padding: 1.5rem 1rem;
+        border-radius: 20px;
+        width: 100%;
+        max-height: 85vh;
+        margin: 0;
+        overflow-y: auto;
+    }
+
+    .uploadSection {
+        margin-bottom: 0.5rem;
+    }
+
+    .formGrid {
+        grid-template-columns: 1fr;
+        /* Single column on mobile */
+        gap: 0.75rem;
+    }
+
+    .formGroupFull {
+        grid-column: span 1;
+    }
+
+    .formTitle h3 {
+        font-size: 1.25rem;
+    }
+
+    .submitBtn {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+}
