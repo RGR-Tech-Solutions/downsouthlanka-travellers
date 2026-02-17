@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.downsouthlankatravellers.gleeze.com"),
   title: "Downsouth Lanka Travellers | Premier Sri Lanka Travel Agency",
   description: "Experience the best of Sri Lanka with Downsouth Lanka Travellers. Custom tours, luxury transport, and unforgettable adventures across the island.",
+  verification: {
+    google: "-TmsnYnLOd82w3huA4PDa9vQ9taQm4hzcj47clTbZcM",
+  },
 };
 
 import WhatsAppButton from "@/components/WhatsAppButton";
